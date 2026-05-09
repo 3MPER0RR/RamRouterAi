@@ -32,7 +32,7 @@ The system is designed as a hybrid inference orchestration engine rather than a 
 
 The system is composed of four logical layers:
 
-### 1. Control Plane (main.py)
+### 1. Control Plane
 
 - System bootstrap
   
