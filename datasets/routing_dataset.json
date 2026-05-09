@@ -1,0 +1,42 @@
+[
+  {
+    "text": "hello",
+    "score": 0.1
+  },
+  {
+    "text": "hi",
+    "score": 0.1
+  },
+  {
+    "text": "remember this note",
+    "score": 0.35
+  },
+  {
+    "text": "save this memory",
+    "score": 0.35
+  },
+  {
+    "text": "parse this log file",
+    "score": 0.65
+  },
+  {
+    "text": "analyze this code",
+    "score": 0.65
+  },
+  {
+    "text": "scan this network",
+    "score": 0.7
+  },
+  {
+    "text": "explain kernel exploitation",
+    "score": 0.95
+  },
+  {
+    "text": "teach me advanced pentesting",
+    "score": 0.95
+  },
+  {
+    "text": "how works heap spraying",
+    "score": 0.95
+  }
+]
