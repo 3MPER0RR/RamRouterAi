@@ -1,7 +1,7 @@
 ## install 
-git clone https://github.com/3MPER0RR/RamRouterAi/
+git clone https://github.com/3MPER0RR/RamRouteAi/
 
-cd RamRouterAi/project
+cd RamRouteAi/project
 
 touch .env
 
