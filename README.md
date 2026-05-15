@@ -31,96 +31,22 @@ numpy,httpx,python-dotenv
 
 uvloop,orjson,scikit-learn,rich,psutil
 
-# RAM-QNN-LLM Runtime Engine
+RamRouteAi
+A RAM-first routing layer for LLM APIs — reducing latency and API call volume through semantic caching.
 
-## Overview
 
-This project implements a multi-layer AI runtime architecture combining:
+Every call to a remote LLM API introduces latency — typically between 300ms and 2 seconds per response — along with a per-token cost. In many real-world applications, a significant portion of incoming queries are semantically redundant: different phrasings of the same intent, repeated questions across sessions, or variations on a narrow domain of inputs. Each of these still pays the full cost of a remote round-trip.
 
-- RAM-based caching and fast execution layer
-  
-- Quantum-inspired neural network (QNN) routing system
-  
-- LLM API fallback (Groq / OpenAI-compatible endpoints)
-  
-- Disk-based persistence layer (checkpoints + datasets)
-  
-- Control plane entrypoint (main.py)
 
-The system is designed as a hybrid inference orchestration engine rather than a traditional chatbot or single-model pipeline.
+RamRouteAi sits between your application and the LLM API. Incoming queries are embedded and compared against a semantic cache held entirely in RAM. If a query is sufficiently similar to a previously seen one — above a configurable similarity threshold — the cached response is returned locally, with sub-millisecond latency. Only genuinely novel queries are forwarded to the external API.
 
----
+The routing decision is made by a lightweight similarity classifier trained on past query-response pairs. The system supports Groq and any OpenAI-compatible endpoint as its external fallback.
 
-## Architecture
+Performance
+(Benchmark results to be added — target metrics: cache hit rate on representative workloads, mean latency with and without cache hit, RAM usage at varying cache sizes.)
 
-The system is composed of four logical layers:
 
-### 1. Control Plane
-
-- System bootstrap
-  
-- Environment loading
-  
-- Module orchestration
-  
-- Runtime initialization
-
-### 2. Persistence Layer (Disk)
-
-- QNN checkpoints
-  
-- Routing datasets
-  
-- Saved state / logs
-  
-- Model restoration
-
-### 3. RAM Runtime Layer
-
-- In-memory cache system
-  
-- Fast-path execution
-  
-- Lightweight rule-based reasoning
-  
-- Cache-first response strategy
-
-### 4. Intelligence Layer
-
-- QNN routing model (policy selector)
-  
-- LLM API fallback (external reasoning engine)
-  
-- Hybrid decision execution
-
----
-
-## Execution Flow
-
-Input → RAM Cache → Local Rules → QNN Router → LLM API → Cache Storage
-
----
-
-## Key Features
-
-- Low-latency RAM-first execution
-- Hybrid AI routing (local + remote inference)
-- Persistent learning via checkpoints
-- Modular runtime design
-- API fallback strategy (Groq/OpenRouter compatible)
-
-## Notes
-
-This project is experimental and focuses on:
-
-- AI orchestration patterns
-- lightweight inference routing
-- edge-friendly execution design
-
-It is not a production-grade ML framework, but a research-oriented runtime architecture prototype.
-
----
-
-## Status
+Status
+Experimental prototype under active development.
 
 Active development — modular components are being incrementally extended.
